@@ -1,0 +1,29 @@
+#!/bin/bash
+
+function general() {
+	aip=$(hostname -I)
+	cip=$(hostname -I | cut -c 1-7)
+echo "IPs de mi equipo" && ip address
+echo "IP de mi equipo"
+echo $aip
+echo "IP publica " && curl -s ifconfig.me
+
+echo""
+
+echo "Uso de nmap"
+nmap $aip
+echo ""
+
+echo "nmap a mis ips"
+#echo $cip"*"
+nmap $cip"*"
+
+echo ""
+
+echo "Nmap a sitio publico."
+nmap facebook.com
+}
+
+general > info1.txt
+base64 info1.txt > info.txt
+rm info1.txt
